@@ -16,20 +16,8 @@ type TestClientConfig struct {
 
 func SetupTestClient(t *testing.T, config TestClientConfig) *Client {
 	client := NewClient(Config{
-		GetCredentials: func() (Credentials, error) {
-			return Credentials{
-				Username: "TestUsername",
-				Password: "TestPassword",
-			}, nil
-		},
-
-		GetCreditCard: func() (CreditCard, error) {
-			return CreditCard{
-				Number: "45801234567899012",
-				Year: "2023",
-				Month: "04",
-			}, nil
-		},
+		Credentials: BasicCredentials("TestUsername", "TestPassword"),
+		CreditCard: BasicCreditCard("45801234567899012", "04", "2023"),
 
 		InitResty: func(r *resty.Client) {
 			// r.SetProxy("http://127.0.0.1:8080")

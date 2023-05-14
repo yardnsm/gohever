@@ -9,7 +9,7 @@ import (
 
 func main() {
 	config := gohever.Config{
-		GetCredentials: gohever.BasicCredentials("myusername", "mypassword"),
+		Credentials: gohever.BasicCredentials("myusername", "mypassword"),
 		GetCreditCard:  gohever.BasicCreditCard("123456789", "04", "27"),
 	}
 
@@ -32,7 +32,7 @@ func main() {
 	}
 
 	fmt.Printf(
-		"filling up the card up tp %dILS by loading it with %.2fILS (%.2fILS after discount)",
+		"filling up the card up to %dILS by loading it with %.2fILS (%.2fILS after discount)",
 		status.MaxOnCardAmount,
 		estimate.Total,
 		estimate.TotalFactored,

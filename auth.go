@@ -118,7 +118,7 @@ func (auth *Auth) getConfig() (*authenticationConfig, error) {
 		return nil, err
 	}
 
-	credentials, err := auth.hvr.config.GetCredentials()
+	credentials, err := auth.hvr.config.Credentials()
 	if err != nil {
 		return nil, fmt.Errorf("unable to get credentials from config: %w", err)
 	}
