@@ -385,7 +385,7 @@ func (card *Card) getCardHistory() (*[]CardHistoryItem, error) {
 }
 
 func (card *Card) loadCard(status CardStatus, amount int32) (*LoadResult, error) {
-	creditCard, err := card.hvr.config.GetCreditCard()
+	creditCard, err := card.hvr.config.CreditCard()
 	if err != nil {
 		return nil, fmt.Errorf("unable to get credit card details from config: %w", err)
 	}

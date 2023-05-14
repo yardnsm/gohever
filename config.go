@@ -16,7 +16,7 @@ type CreditCard struct {
 type Config struct {
 	InitResty      func(r *resty.Client)
 	Credentials func() (Credentials, error)
-	GetCreditCard  func() (CreditCard, error)
+	CreditCard  func() (CreditCard, error)
 }
 
 func BasicCredentials(username, password string) func() (Credentials, error) {

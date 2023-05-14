@@ -109,7 +109,7 @@ func TestGetConfig(t *testing.T) {
 	assert.Equal(t, cfg, &authenticationConfig{
 		formData: formData{
 			"bs":            "1",
-			"cn":            "12341234123",
+			"cn":            "12341234134",
 			"emailRestore":  "",
 			"email_loc":     "",
 			"oMode":         "login",
