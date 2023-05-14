@@ -10,7 +10,7 @@ import (
 func main() {
 	config := gohever.Config{
 		Credentials: gohever.BasicCredentials("myusername", "mypassword"),
-		GetCreditCard:  gohever.BasicCreditCard("123456789", "04", "27"),
+		CreditCard:  gohever.BasicCreditCard("123456789", "04", "27"),
 	}
 
 	hvr := gohever.NewClient(config)
