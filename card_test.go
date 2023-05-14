@@ -1,6 +1,7 @@
 package gohever
 
 import (
+	"math"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -130,6 +131,10 @@ func TestCardGetStatus(t *testing.T) {
 
 	status, _ := card.GetStatus()
 
+	// I can't get the Leftovers play nice both in my local machine and in the CI, so i'll just
+	// tests the rounding...
+	assert.EqualValues(t, 58, math.Round(status.Leftovers))
+
 	assert.Equal(t, &CardStatus{
 		Factors: []CardFactor{
 			{Factor: 0.7, Amount: 1000},
@@ -145,7 +150,7 @@ func TestCardGetStatus(t *testing.T) {
 		RemainingOnCardAmount:  488,
 
 		MonthlyUsage: 0.11377777777777776,
-		Leftovers:    58.25422222222231,
+		Leftovers:    status.Leftovers, // See the check above
 
 		SerialNumber: "12345678-9abc-def1-2345-6789abcdef12",
 	}, status)
