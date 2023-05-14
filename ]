@@ -66,16 +66,16 @@ func TestGetCardConfig(t *testing.T) {
 	config, _ := card.getCardConfig()
 
 	assert.Equal(t, &cardConfig{
-		cardFactor1:      0.7,
-		cardFactor2:      0.8,
-		cardFactor3:      0.9,
+		cardFactor1: 0.9876,
+		cardFactor2: 0.5432,
+		cardFactor3: 0.80,
 
-		cardFactorPrice1: 1000,
-		cardFactorPrice2: 1500,
-		cardFactorPrice3: 2000,
+		cardFactorPrice1: 1029,
+		cardFactorPrice2: 2837,
+		cardFactorPrice3: 1000,
 
-		maxMonthLoad:     4500,
-		maxOnCard:        1000,
+		maxMonthLoad: 4321,
+		maxOnCard:    1234,
 
 		serialNumber: "12345678-9abc-def1-2345-6789abcdef12",
 	}, config)

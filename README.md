@@ -9,7 +9,6 @@ go get -u github.com/yardnsm/gohever
 ```
 
 * [Overview](#overview)
-* [Example](#example)
 * [License](#license)
 
 ## Overview
@@ -44,4 +43,4 @@ so I keep it in a separate, private repo.
 
 ## License
 
-MIT © [Yarden Sod-Moriah](http://yardnsm.net/)
+MIT © [Yarden Sod-Moriah](https://ysm.sh/)
