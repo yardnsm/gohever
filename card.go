@@ -197,6 +197,11 @@ func parseGetCardConfigResponse(resp *resty.Response) (*cardConfig, error) {
 	}
 
 	for ptr, reg := range scanMap {
+		matches := reg.FindStringSubmatch(body)
+		if matches == nil {
+			return nil, ErrUnableToParseCardConfig
+		}
+
 		val, err := strconv.ParseFloat(reg.FindStringSubmatch(body)[1], 64)
 		if err != nil {
 			return nil, err

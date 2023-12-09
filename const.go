@@ -37,6 +37,8 @@ var (
 	ErrNotAuthenticated    = errors.New("not authenticated to HEVER website")
 	ErrAuthenticatedFailed = errors.New("failed to authenticate to HEVER website")
 
+	ErrUnableToParseCardConfig = errors.New("failed to parse the card config")
+
 	ErrNotEnoughToLoad       = errors.New("the amount to load should be above 5")
 	ErrLoadAboveOnCardLimit  = errors.New("charging above the max on card limit")
 	ErrLoadAboveMonthlyLimit = errors.New("charging above the max monthly limit")
