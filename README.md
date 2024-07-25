@@ -31,7 +31,9 @@ Plus some nice things that I really like:
 * Nice [testutils](./testutils) for making testing the client way easier;
 * Automatic handling of authentication - you don't need to call `Authenticate()` at all!
 
-⚠️ **This project was meant to be used for educational purposes only. I am not affiliated with Hever in any way.**
+> [!WARNING]
+> This project was meant to be used for educational purposes only. I am not affiliated with Hever in
+> any way.
 
 #### A note on `testdata`
 
