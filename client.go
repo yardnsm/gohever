@@ -6,7 +6,15 @@ import (
 	"github.com/go-resty/resty/v2"
 )
 
+type siteFlavor int
+
+const (
+	FlavorHvr siteFlavor = iota
+	FlavorMcc
+)
+
 type Client struct {
+	flavor siteFlavor
 	config Config
 	r      *resty.Client
 
@@ -16,13 +24,15 @@ type Client struct {
 	Cards struct {
 		Keva   CardInterface
 		Teamim CardInterface
+		Sheli  CardInterface
 	}
 }
 
-func NewClient(config Config) *Client {
+func NewClient(flavor siteFlavor, config Config) *Client {
 	r := resty.New()
 
 	client := &Client{
+		flavor: flavor,
 		config: config,
 		r:      r,
 
@@ -38,11 +48,24 @@ func (hvr *Client) init() {
 
 	// Setup endpoints
 	hvr.Auth = newAuth(hvr)
-	hvr.Cards.Keva = newCard(hvr, TypeKeva)
-	hvr.Cards.Teamim = newCard(hvr, TypeTeamim)
+
+	// Setup Cards
+	switch hvr.flavor {
+	case FlavorHvr:
+		hvr.Cards.Keva = newCard(hvr, TypeKeva)
+		hvr.Cards.Teamim = newCard(hvr, TypeTeamim)
+
+	case FlavorMcc:
+		hvr.Cards.Sheli = newCard(hvr, TypeSheli)
+	}
+
+	baseUrl := heverBaseUrl
+	if hvr.flavor == FlavorMcc {
+		baseUrl = mccBaseUrl
+	}
 
 	// Setup resty
-	hvr.r.SetBaseURL(heverBaseUrl)
+	hvr.r.SetBaseURL(baseUrl)
 	hvr.r.SetRedirectPolicy(
 		resty.RedirectPolicyFunc(hvr.redirectPolicy),
 	)

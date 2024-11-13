@@ -111,6 +111,7 @@ type CardType int
 const (
 	TypeKeva CardType = iota
 	TypeTeamim
+	TypeSheli
 )
 
 // Card history actions

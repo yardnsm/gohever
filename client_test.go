@@ -11,13 +11,14 @@ import (
 
 type TestClientConfig struct {
 	Authenticated bool
-	Mocks []*testutils.MockedRequest
+	Mocks         []*testutils.MockedRequest
+	Flavor        siteFlavor
 }
 
 func SetupTestClient(t *testing.T, config TestClientConfig) *Client {
-	client := NewClient(Config{
+	client := NewClient(config.Flavor, Config{
 		Credentials: BasicCredentials("TestUsername", "TestPassword"),
-		CreditCard: BasicCreditCard("45801234567899012", "04", "2023"),
+		CreditCard:  BasicCreditCard("45801234567899012", "04", "2023"),
 
 		InitResty: func(r *resty.Client) {
 			// r.SetProxy("http://127.0.0.1:8080")
@@ -39,6 +40,19 @@ func SetupTestClient(t *testing.T, config TestClientConfig) *Client {
 	}
 
 	return client
+}
+
+func TestFlavorInitialization(t *testing.T) {
+	t.Run("should have keva and teamim when flavor if hvr", func(t *testing.T) {
+		client := SetupTestClient(t, TestClientConfig{
+			Flavor: FlavorHvr,
+		})
+
+		assert.IsType(t, &Card{}, client.Cards.Keva)
+		assert.IsType(t, &Card{}, client.Cards.Teamim)
+
+		assert.Nil(t, client.Cards.Sheli)
+	})
 }
 
 func TestClientRedirectPolicy(t *testing.T) {

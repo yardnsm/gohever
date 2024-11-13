@@ -14,7 +14,7 @@ func main() {
 		CreditCard:  gohever.BasicCreditCard("123456789", "04", "27"),
 	}
 
-	hvr := gohever.NewClient(config)
+	hvr := gohever.NewClient(gohever.FlavorHvr, config)
 	keva := hvr.Cards.Keva
 
 	status, err := keva.GetStatus()

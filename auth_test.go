@@ -13,7 +13,7 @@ func TestWrapAuthenticated(t *testing.T) {
 	type testStruct struct{ key string }
 
 	setupTest := func(t *testing.T) (*Client, *mocks.AuthInterface, *mocks.RequestHandler[testStruct]) {
-		client := NewClient(Config{})
+		client := NewClient(FlavorHvr, Config{})
 
 		authMock := mocks.NewAuthInterface(t)
 		requestHandlerMock := mocks.NewRequestHandler[testStruct](t)

@@ -3,7 +3,7 @@ package gohever
 import "errors"
 
 const (
-	heverDomain  = "www.hvr.co.il"
+	mccBaseUrl   = "https://www.mcc.co.il/"
 	heverBaseUrl = "https://www.hvr.co.il/"
 
 	heverUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
